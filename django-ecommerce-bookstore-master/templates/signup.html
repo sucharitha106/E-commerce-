@@ -1,0 +1,24 @@
+{# Extend the base template to inherit the layout (navbar, footer, etc.) #}
+{% extends 'base.html' %}
+
+{# Set the title of the web page to "Sign Up" — used in the <title> block of base.html #}
+{% block title %}Sign Up{% endblock title %}
+
+{# Start the content block — this will be injected into the base.html where {% block content %} is defined #}
+{% block content %}
+
+<h2>Sign up</h2>  {# Heading for the page #}
+
+<form method="post">  {# Start the form — 'post' means data will be sent securely in the request body #}
+
+    {% csrf_token %}  {# Prevents Cross-Site Request Forgery attacks — a Django security measure #}
+    
+    {{ form.as_p }}  {# Render the form fields as <p> elements automatically from Django form object #}
+    
+    <button type="submit" class="btn btn-success">Sign up</button> 
+    {# Submit button styled with Bootstrap's success (green) button class #}
+    
+</form>
+
+{# End of the content block #}
+{% endblock content %}
